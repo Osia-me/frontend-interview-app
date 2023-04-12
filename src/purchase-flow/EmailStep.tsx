@@ -14,7 +14,7 @@ const EmailStep: React.FC<EmailStepProps> = (props) => {
   return (
     <React.Fragment>
       <div>
-      {PurchaseFlow.email}: {' '}
+      {PurchaseFlow.email}:
         <input
           type="email"
           onChange={ ({ target: { value } }) => {

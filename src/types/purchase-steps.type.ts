@@ -1,13 +1,18 @@
 export enum PurchaseSteps {
-    email = 'email',
-    age = 'age',
-    name = 'name',
-    summary = 'summary'
+    Email,
+    Age,
+    Name,
+    Summary
+}
+
+type PurchaseNameType = {
+    name?: string,
+    surname?: string
 }
 
 export type PurchaseStepsType = {
     email?: string,
     age?: string,
-    name?: string,
+    name?: PurchaseNameType,
     surname?: string
 }

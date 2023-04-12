@@ -10,7 +10,7 @@ const AgeStep: React.FC<AgeStepProps> = (props) => {
   return (
     <>
       <div>
-      {PurchaseFlow.age}: {' '}
+      {PurchaseFlow.age}:
         <input
           type="number"
           step='1'
@@ -22,7 +22,10 @@ const AgeStep: React.FC<AgeStepProps> = (props) => {
           value={age}
         ></input>
       </div>
-      <button onClick={() => props.updateUserData('age', age!)}>{PurchaseFlow.next}</button>
+      <button 
+        onClick={() => props.updateUserData('age', age!)}
+        disabled={!age}
+      >{PurchaseFlow.next}</button>
     </>
   )
 }
