@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes as Switch, Route, Link } from 'react-router-dom';
-import Buyflow, { ProductIds } from './buyflow/Buyflow';
-import LANDING_CONST from './helpers/constants';
+import Purchaseflow from './purchase-flow/Purchaseflow';
+import LANDING_CONST from './constants/landing.constants';
+import { ProductIds } from './types/product.type';
 import logo from './logo.svg';
 import './App.css';
 
@@ -13,7 +14,10 @@ const App = (): JSX.Element => {
         </header>
           <Switch>
             <Route path="/buy/insurance_developer" element={
-              <Buyflow productId={ProductIds.developerInsurance} />
+              <Purchaseflow productId={ProductIds.developerInsurance} />
+            }/>
+            <Route path="/buy/insurance_designer" element={
+              <Purchaseflow productId={ProductIds.designerInsurance} />
             }/>
             <Route path="/" element={
             <div>
