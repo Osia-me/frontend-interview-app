@@ -20,7 +20,7 @@ const App = (): JSX.Element => {
               <Purchaseflow productId={ProductIds.designerInsurance} />
             }/>
             <Route path="/" element={
-            <div>
+            <nav>
               <p>{LANDING_CONST.title}</p>
               <div className='App-buttons'>
               <Link to="/buy/insurance_developer">
@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
                 </button>
               </Link>
               </div>
-            </div>
+            </nav>
             }/>
           </Switch>
         </div>

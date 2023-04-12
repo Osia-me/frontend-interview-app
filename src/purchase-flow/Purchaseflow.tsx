@@ -14,7 +14,7 @@ const Purchaseflow: React.FC<BuyflowProps> = (props) => {
   const [currentStep, setCurrentStep] = useState('email');
   const [collectedData, setCollectedData] = useState<PurchaseStepsType>({
     email: '',
-    age: 0,
+    age: '',
     name: '',
     surname: ''
   })
@@ -27,9 +27,9 @@ const Purchaseflow: React.FC<BuyflowProps> = (props) => {
   return (
     <React.Fragment>
       <h4>{PRODUCT_IDS_TO_NAMES[props.productId]}</h4>
-      {(currentStep === PurchaseSteps.email && <EmailStep cb={getStepCallback(PurchaseSteps.age)} />) ||
+      {(currentStep === PurchaseSteps.email && <EmailStep updateUserData={getStepCallback(PurchaseSteps.age)} />) ||
         (currentStep === PurchaseSteps.age && (
-          <AgeStep cb={getStepCallback(PurchaseSteps.summary)} />
+          <AgeStep updateUserData={getStepCallback(PurchaseSteps.summary)} />
         )) ||
         (currentStep === PurchaseSteps.summary && (
           <SummaryStep collectedData={collectedData} />

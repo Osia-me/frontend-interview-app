@@ -1,24 +1,28 @@
 import React, { useState } from 'react'
+import { PurchaseFlow } from '../constants/purchase-flow.constants'
 
 interface AgeStepProps {
-  cb: (field: string, value: number) => void
+  updateUserData: (field: string, value: number) => void
 }
 
 const AgeStep: React.FC<AgeStepProps> = (props) => {
-  const [age, setAge] = useState(0)
+  const [age, setAge] = useState<number | undefined>();
   return (
     <>
       <div>
-        Age:{' '}
+      {PurchaseFlow.age}: {' '}
         <input
           type="number"
+          step='1'
+          min='0'
+          max='110'
           onChange={({ target: { value } }) => {
-            setAge(Number(value))
+            setAge(parseInt(value, 10))
           }}
           value={age}
         ></input>
       </div>
-      <button onClick={() => props.cb('age', age)}>Next</button>
+      <button onClick={() => props.updateUserData('age', age!)}>{PurchaseFlow.next}</button>
     </>
   )
 }

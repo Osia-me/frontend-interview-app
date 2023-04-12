@@ -7,7 +7,7 @@ export enum PurchaseSteps {
 
 export type PurchaseStepsType = {
     email?: string,
-    age?: number,
+    age?: string,
     name?: string,
     surname?: string
 }
