@@ -6,26 +6,25 @@ interface AgeStepProps {
 }
 
 const AgeStep: React.FC<AgeStepProps> = (props) => {
-  const [age, setAge] = useState<number | undefined>();
+  const [age, setAge] = useState<number | undefined>()
   return (
     <>
       <div>
-      {PurchaseFlow.age}:
+        {PurchaseFlow.age}:
         <input
           type="number"
-          step='1'
-          min='0'
-          max='110'
+          step="1"
+          min="0"
+          max="110"
           onChange={({ target: { value } }) => {
             setAge(parseInt(value, 10))
           }}
           value={age}
         ></input>
       </div>
-      <button 
-        onClick={() => props.updateUserData('age', age!)}
-        disabled={!age}
-      >{PurchaseFlow.next}</button>
+      <button onClick={() => props.updateUserData('age', age!)} disabled={!age}>
+        {PurchaseFlow.next}
+      </button>
     </>
   )
 }
