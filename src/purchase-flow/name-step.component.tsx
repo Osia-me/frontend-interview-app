@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { PurchaseFlow } from '../constants/purchase-flow.constants'
-import isEmailValid from '../helpers/is-email-valid'
-import './EmailStep.css'
 
 interface NameStepProps {
   updateUserData: (field: string, value: object) => void
@@ -10,9 +8,13 @@ interface NameStepProps {
 const NameStep: React.FC<NameStepProps> = (props) => {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
+  const onSubmit = (event: React.FormEvent) => {
+    event.preventDefault()
+    props.updateUserData('name', { name, surname })
+  }
 
   return (
-    <React.Fragment>
+    <form onSubmit={onSubmit}>
       <div>
         {PurchaseFlow.name}:
         <input
@@ -29,15 +31,10 @@ const NameStep: React.FC<NameStepProps> = (props) => {
           value={surname}
         />
       </div>
-      <button
-        onClick={() => {
-          props.updateUserData('name', { name, surname })
-        }}
-        disabled={!name || !surname}
-      >
+      <button type="submit" disabled={!name || !surname}>
         {PurchaseFlow.next}
       </button>
-    </React.Fragment>
+    </form>
   )
 }
 

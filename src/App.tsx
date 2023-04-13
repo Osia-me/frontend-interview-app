@@ -4,7 +4,7 @@ import {
   Route,
   Link,
 } from 'react-router-dom'
-import Purchaseflow from './purchase-flow/Purchaseflow'
+import Purchaseflow from './purchase-flow/purchase-flow.component'
 import LANDING_CONST from './constants/landing.constants'
 import { ProductIds } from './types/product.type'
 import logo from './logo.svg'

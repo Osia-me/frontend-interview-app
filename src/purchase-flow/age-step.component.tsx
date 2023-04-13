@@ -6,9 +6,14 @@ interface AgeStepProps {
 }
 
 const AgeStep: React.FC<AgeStepProps> = (props) => {
-  const [age, setAge] = useState<number | undefined>()
+  const [age, setAge] = useState<number>(0)
+  const onSubmit = (event: React.FormEvent) => {
+    event.preventDefault()
+    props.updateUserData('age', age!)
+  }
+
   return (
-    <>
+    <form onSubmit={onSubmit}>
       <div>
         {PurchaseFlow.age}:
         <input
@@ -17,15 +22,17 @@ const AgeStep: React.FC<AgeStepProps> = (props) => {
           min="0"
           max="110"
           onChange={({ target: { value } }) => {
-            setAge(parseInt(value, 10))
+            if (!isNaN(parseInt(value, 10))) {
+              setAge(parseInt(value, 10))
+            }
           }}
           value={age}
-        ></input>
+        />
       </div>
-      <button onClick={() => props.updateUserData('age', age!)} disabled={!age}>
+      <button type="submit" disabled={!age}>
         {PurchaseFlow.next}
       </button>
-    </>
+    </form>
   )
 }
 

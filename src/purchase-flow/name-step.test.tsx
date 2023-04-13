@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import NameStep from './NameStep'
+import NameStep from './name-step.component'
 
 describe('Name Step Componenet', () => {
   test('renders the component', () => {

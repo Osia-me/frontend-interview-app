@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import AgeStep from './AgeStep'
+import AgeStep from './age-step.component'
 
 describe('Age Step Component', () => {
   test('renders the component', () => {

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import AgeStep from './AgeStep'
-import EmailStep from './EmailStep'
-import SummaryStep from './SummaryStep'
+import React, { useMemo, useState } from 'react'
+import AgeStep from './age-step.component'
+import EmailStep from './email-step.component'
+import SummaryStep from './summary-step.component'
 import { ProductIds } from '../types/product.type'
 import { PRODUCT_IDS_TO_NAMES } from '../constants/product-names.constants'
 import { PurchaseSteps, PurchaseStepsType } from '../types/purchase-steps.type'
-import NameStep from './NameStep'
+import NameStep from './name-step.component'
 
 interface BuyflowProps {
   productId: ProductIds
@@ -31,8 +31,8 @@ const Purchaseflow: React.FC<BuyflowProps> = (props) => {
 
   const isDesignerInsurance = props.productId === ProductIds.designerInsurance
 
-  const ActiveView = (step: PurchaseSteps) => {
-    switch (step) {
+  const ActiveView = useMemo(() => {
+    switch (currentStep) {
       case PurchaseSteps.Email:
         return <EmailStep updateUserData={getStepCallback(PurchaseSteps.Age)} />
       case PurchaseSteps.Age:
@@ -50,12 +50,12 @@ const Purchaseflow: React.FC<BuyflowProps> = (props) => {
       case PurchaseSteps.Summary:
         return <SummaryStep collectedData={collectedData} />
     }
-  }
+  }, [currentStep])
 
   return (
     <React.Fragment>
       <h4>{PRODUCT_IDS_TO_NAMES[props.productId]}</h4>
-      {ActiveView(currentStep)}
+      {ActiveView}
     </React.Fragment>
   )
 }
