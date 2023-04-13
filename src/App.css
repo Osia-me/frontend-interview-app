@@ -31,6 +31,23 @@
   color: white;
 }
 
+.App-buttons {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-button {
+  margin-top: 5px;
+  padding: 5px;
+  cursor: pointer;
+  width: 300px;
+}
+
 .App-link {
   color: #163c2c;
 }
